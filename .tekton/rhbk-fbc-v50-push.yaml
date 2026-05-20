@@ -330,13 +330,17 @@ spec:
       - build-image-index
       taskRef:
         params:
+        - name: url
+          value: https://github.com/chandwanitulsi/build-definitions.git
+        - name: revision
+          value: fix-for-5.0
+        - name: pathInRepo
+          value: task/validate-fbc/0.1/validate-fbc.yaml
         - name: name
           value: validate-fbc
-        - name: bundle
-          value: quay.io/konflux-ci/tekton-catalog/task-validate-fbc:0.1@sha256:d1b92157be81f58facc413ff15ae16dcedb01ada0ad8c72c7d759e818ce51083
         - name: kind
           value: task
-        resolver: bundles
+        resolver: git
       when:
       - input: $(params.skip-checks)
         operator: in
